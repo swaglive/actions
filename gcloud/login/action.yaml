@@ -1,0 +1,9 @@
+# action.yml
+name: 'GCloud Login'
+description: 'Login GCloud'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'package'  
+  color: 'blue'

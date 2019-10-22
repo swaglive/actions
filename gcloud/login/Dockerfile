@@ -12,7 +12,7 @@ LABEL "com.github.actions.color"="green"
 
 
 RUN \
-    apk add curl bash python && \
+    apk add curl bash python git && \
     curl https://sdk.cloud.google.com | bash -s -- --disable-prompts
 
 ENV PATH $PATH:/root/google-cloud-sdk/bin

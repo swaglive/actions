@@ -1,0 +1,21 @@
+name: 'Create Milestone Regularly'
+description: 'Manupate Github API'
+inputs:
+  start-date:
+    description: 'Start date'
+    required: true
+  period-day:
+    description: 'How long a milestone'
+    required: true
+    default: 14
+  format:
+    description: 'Milestone title'
+    required: true
+    default: '[M]YYYY-[W]WW'
+  description:
+    description: 'Milestone description'
+    required: true
+    default: 'swaglive/action/create-milestone create'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

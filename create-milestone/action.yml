@@ -9,7 +9,7 @@ inputs:
     required: true
     default: 14
   format:
-    description: 'Milestone title'
+    description: 'Milestone title. https://momentjs.com/docs/#/displaying/format/'
     required: true
     default: '[M]YYYY-[W]WW'
   description:

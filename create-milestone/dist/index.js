@@ -6159,40 +6159,109 @@ module.exports = require("events");
 /***/ }),
 
 /***/ 622:
-/***/ (function(__unusedmodule, __unusedexports, __webpack_require__) {
+/***/ (function(module, __unusedexports, __webpack_require__) {
 
 const github = __webpack_require__(148);
 const core = __webpack_require__(827);
 const moment = __webpack_require__(797);
 
-function manipulate_date(startDate, periodDay) {
-    var milestone_date = moment();
-    const diff = milestone_date.dayOfYear() - moment(startDate).dayOfYear();
-    return milestone_date.subtract(diff%periodDay,'d');
-}
-
 async function run() {
 
-    const octokit = new github.GitHub(process.env['GITHUB_TOKEN']);
+    try {
+        const octokit = new github.GitHub(process.env['GITHUB_TOKEN']);
+        const startDate = core.getInput('start-date') ? eval(core.getInput('start-date')) : moment().startOf('w');
+        const duration = core.getInput('duration', { required: true });
+        const title = core.getInput('title', { required: true });
+        const description = core.getInput('description');
 
-    const startDate = core.getInput('start-date', { required: true });
-    const periodDay = core.getInput('period-day', { required: true });
-    const format = core.getInput('format', { required: true });
-    const description = core.getInput('description', { required: true });
+        var ms = getCurrentMilestone(startDate, moment(), duration);
 
-    var date = manipulate_date(startDate, periodDay);
+        const msg = await octokit.issues.createMilestone({
+            owner: process.env['GITHUB_REPOSITORY'].split("/")[0],
+            repo: process.env['GITHUB_REPOSITORY'].split("/")[1],
+            title: ms.from.format(title),
+            due_on: ms.dueOn,
+            description: description
+        });
 
-    const msg = await octokit.issues.createMilestone({
-        owner: 'swaglive',
-        repo: 'action-demo',
-        title: date.format(format),
-        description: description,
-        due_on: date.add(periodDay,'d')
-    });
+        console.log(msg);
 
-    console.log(msg);
+    } catch (err) {
+        core.setFailed(err);
+    }
 }
-run();
+
+/**
+ * 
+ * @param {moment} startDate ex. moment().startOf('w')
+ * @param {moment} currentDate ex. moment()
+ * @param {string} duration (W|2W|M|Q)
+ */
+function getCurrentMilestone(startDate, currentDate, duration) {
+    if (duration === 'W') {
+        if (currentDate.weekday() !== startDate.weekday()) {
+            const fromDate = moment(currentDate).weekday(startDate.weekday() - 7);
+            return {
+                from: fromDate,
+                dueOn: moment(fromDate).add(1, 'W')
+            };
+        }
+        return {
+            from: moment(currentDate),
+            dueOn: moment(currentDate).add(1, 'W')
+        };
+    } else if (duration === '2W') {
+        const ms = closestWeekDayBiweekly(startDate, currentDate);
+        return {
+            from: ms.from,
+            dueOn: ms.dueOn
+        };
+
+    } else if (duration === 'M') {
+        return {
+            from: currentDate.startOf('M'),
+            dueOn: currentDate.endOf('M')
+        };
+    } else if (duration === 'Q') {
+        return {
+            from: currentDate.startOf('Q'),
+            dueOn: currentDate.endOf('Q')
+        };
+    } else {
+        throw new Error(`Unknown duration type: ${duration}`)
+    }
+}
+
+
+/**
+ * 
+ * @param {moment} startDate ex. moment().startOf('w')
+ * @param {moment} currentDate ex. moment()
+ */
+function closestWeekDayBiweekly(startDate, currentDate) {
+
+    if (startDate.day() != 0) {
+        const diff = currentDate.diff(startDate, 'days');
+        currentDate.subtract(diff % 14, 'd');
+    } else {
+        currentDate.startOf('w');
+        if (currentDate.week() % 2 == 1) {
+            currentDate.subtract(1, 'w');
+        }
+    }
+
+    return {
+        from: currentDate,
+        dueOn: moment(currentDate).add(2, 'w')
+    };
+}
+
+
+module.exports = { closestWeekDayBiweekly, getCurrentMilestone }
+
+if (require.main === require.cache[eval('__filename')]) {
+    run();
+} 
 
 /***/ }),
 

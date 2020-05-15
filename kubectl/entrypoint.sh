@@ -4,8 +4,8 @@ set -e
 echo "$KUBE_CONFIG" | base64 -d > /tmp/config
 export KUBECONFIG=/tmp/config
 
-if [[ "$CONTEXT" ]]; then
-    kubectl config use-context $CONTEXT
+if [[ "$INPUT_CONTEXT" ]]; then
+    kubectl config use-context $INPUT_CONTEXT
 fi
 
 sh -c "$*"

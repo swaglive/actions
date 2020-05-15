@@ -8,4 +8,4 @@ if [[ "$CONTEXT" ]]; then
     kubectl config use-context $CONTEXT
 fi
 
-bash -c "$*"
+sh -c "$*"

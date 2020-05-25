@@ -1,0 +1,9 @@
+name: 'Kubectl'
+description: 'Alpine with kubectl'
+inputs:
+  context:
+    description: 'ex. gke_asia-east1_edge-tw:ops:ops'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

@@ -1,0 +1,26 @@
+name: 'Update Status'
+description: 'Update status'
+inputs:
+  state:
+    description: 'Option: success, failure'
+    required: false
+    default: 'success'
+  auth_token: 
+    description: 'Auth token used to API'
+    required: true
+    default: "${{ github.token }}"
+  pull_sha: 
+    description: 'Commit SHA'
+    default: "${{ github.event.pull_request.head.sha}}"
+    required: false
+  push_sha: 
+    description: 'Commit SHA'
+    required: false
+    default: "${{ github.sha }}"
+  deploy_to: 
+    description: 'Target cluster/environment'
+    default: 'dev'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

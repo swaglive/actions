@@ -11,7 +11,7 @@ inputs:
     default: "${{ github.token }}"
   pull_sha: 
     description: 'Commit SHA'
-    default: "${{ github.event.pull_request.head.sha}}"
+    default: "${{ github.event.pull_request.head.sha }}"
     required: false
   push_sha: 
     description: 'Commit SHA'

@@ -1,4 +1,5 @@
-```
+## Exmaple
+```yaml
 on:
   push:
   pull_request:
@@ -13,6 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./update-status
+      - uses: ./update-status
         with:
-          auth-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_to: production
 ```

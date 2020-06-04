@@ -9,7 +9,7 @@ fi
 if [[ $GITHUB_REF == *"refs/tags"* ]]; then
     TAG=${GITHUB_REF/refs\/tags\//}
 else
-    TAG=$COMMIT_SHA
+    TAG=${COMMIT_SHA:0:10}
 fi
 
 http POST https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/${COMMIT_SHA}/statuses \

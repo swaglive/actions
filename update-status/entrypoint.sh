@@ -6,7 +6,7 @@ else
     COMMIT_SHA=$GITHUB_SHA
 fi
 
-if [[ $GITHUB_REF == *"refs/tags"* ]]; then
+if echo $GITHUB_REF | grep -q "refs/tags" ; then
     TAG=${GITHUB_REF/refs\/tags\//}
 else
     TAG=${COMMIT_SHA:0:10}

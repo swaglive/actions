@@ -17,6 +17,10 @@ inputs:
     description: 'Target cluster/environment'
     default: 'dev'
     required: true
+  sha_length: 
+    description: 'SHA will short to N'
+    default: '10'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'

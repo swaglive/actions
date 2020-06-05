@@ -9,7 +9,7 @@ fi
 if echo $GITHUB_REF | grep -q "refs/tags" ; then
     TAG=${GITHUB_REF/refs\/tags\//}
 else
-    TAG=${COMMIT_SHA:0:10}
+    TAG=${COMMIT_SHA:0:$INPUT_SHA_LENGTH}
 fi
 
 http POST https://api.github.com/repos/${GITHUB_REPOSITORY}/commits/${COMMIT_SHA}/statuses \

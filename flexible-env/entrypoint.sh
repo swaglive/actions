@@ -23,7 +23,8 @@ echo "::set-env name=FLEX_GIT_REF::$FLEX_GIT_REF"
 
 ## Shorten
 echo "::set-env name=FLEX_GIT_SHA_SHORT::${FLEX_GIT_SHA:0:7}"
-echo "::set-env name=FLEX_GIT_REF_SHORT::${FLEX_GIT_REF#refs/(heads|tags)/}"
+FLEX_GIT_REF_SHORT="${FLEX_GIT_REF#refs/(heads|tags)/}"
+echo "::set-env name=FLEX_GIT_REF_SHORT::$FLEX_GIT_REF_SHORT"
 echo "::set-env name=FLEX_GIT_REF_FORMAT::${FLEX_GIT_REF_SHORT//[^a-z0-9A-Z]/-}"
 
 zsh -c "$*"

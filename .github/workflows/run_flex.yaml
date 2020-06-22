@@ -7,6 +7,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        uses: ./flexible
+        uses: ./flexible-env
       - run: echo ${{ env.FLEX_GIT_SHA }}
       - run: echo ${{ env.FLEX_GIT_REF }}

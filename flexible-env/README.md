@@ -8,9 +8,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - use: swaglive/actions/flexible-env
-    - use: echo ${{ env.FLEX_GIT_SHA }}
-    - use: echo ${{ env.FLEX_GIT_REF }}
+      - use: swaglive/actions/flexible-env
+      - use: echo ${{ env.FLEX_GIT_SHA }}
+      - use: echo ${{ env.FLEX_GIT_REF }}
 ```
 
 ## Develop this action

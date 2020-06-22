@@ -13,4 +13,8 @@ else
     echo "::set-env name=FLEX_GIT_REF::$GITHUB_REF"
 fi
 
+if echo $GITHUB_REF | grep -q "refs/tags" ; then
+    echo "::set-env name=FLEX_GIT_TAG::${GITHUB_REF/refs\/tags\//}"
+fi
+
 sh -c "$*"

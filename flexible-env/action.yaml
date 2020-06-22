@@ -1,0 +1,11 @@
+# action.yml
+name: 'Flexible ENV'
+description: 'Set env which hard to get from action default ENV.'
+inputs:
+  pull_sha: 
+    description: 'Pull Request head SHA'
+    default: "${{ github.event.pull_request.head.sha }}"
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

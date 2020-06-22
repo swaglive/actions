@@ -1,0 +1,12 @@
+name: Test kubectl
+on:
+  push:
+    paths:
+      - "kubectl/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: docker build kubectl

@@ -1,0 +1,12 @@
+name: Run flexible-env
+on:
+  push:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        uses: ./flexible
+      - run: echo ${{ env.FLEX_GIT_SHA }}
+      - run: echo ${{ env.FLEX_GIT_REF }}

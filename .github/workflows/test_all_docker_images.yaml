@@ -1,0 +1,12 @@
+name: Test docker images
+on:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: find . -name 'Dockerfile' | xargs -n1 dirname | xargs -n1 -P4 docker build

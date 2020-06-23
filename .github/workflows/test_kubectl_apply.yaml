@@ -1,12 +1,12 @@
-name: Test kubectl
+name: Test kubectl-apply
 on:
   push:
     paths:
-      - "kubectl/**"
+      - "kubectl-apply/**"
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run: docker build kubectl
+        run: docker build kubectl-apply

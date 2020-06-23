@@ -6,12 +6,11 @@
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Kubectl apply
       uses: swaglive/actions/kubectl-apply@master
-      env:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
       with:
+        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         path: templates/bot
         context: gke_asia-east1_edge-tw:ops:ops
         kustomize: true

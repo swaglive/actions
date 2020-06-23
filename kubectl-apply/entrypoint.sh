@@ -2,7 +2,7 @@
 set -e
 
 ## Variables check
-: "${KUBE_CONFIG:?"Need to set env.KUBE_CONFIG"}"
+: "${INPUT_KUBE_CONFIG:?"Need to set intputs.KUBE_CONFIG"}"
 : "${INPUT_CONTEXT:?"Need to set inputs.context"}"
 [[ "$INPUT_KUSTOMIZE" ]] && APPLY_METHOD=-k || APPLY_METHOD=-f
 NAMESPACE=${INPUT_NAMESPACE:-default}

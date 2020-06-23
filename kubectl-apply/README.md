@@ -10,7 +10,7 @@
     - name: Kubectl apply
       uses: swaglive/actions/kubectl-apply@master
       with:
-        KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        kube_config: ${{ secrets.KUBE_CONFIG }}
         path: templates/bot
         context: gke_asia-east1_edge-tw:ops:ops
         kustomize: true

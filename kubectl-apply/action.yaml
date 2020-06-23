@@ -11,6 +11,9 @@ inputs:
   context:
     description: 'ex. gke_asia-east1_edge-tw:ops:ops'
     required: true
+  kustomize:
+    description: 'kubectl apply -k if true. Default to false.'
+    required: false
   watch:
     description: 'ex. deployment/bot'
     required: false

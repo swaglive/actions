@@ -4,6 +4,17 @@ inputs:
   context:
     description: 'ex. gke_asia-east1_edge-tw:ops:ops'
     required: true
+  watch:
+    description: 'ex. deployment/bot'
+    required: false
+  namespace:
+    description: 'ex. kube-system'
+    default: 'default'
+    required: false
+  watch_timeout:
+    description: '60s, 10m, 1h'
+    default: '60s'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

@@ -1,6 +1,10 @@
-name: 'Kubectl'
+name: 'Kubectl Apply'
 description: 'Alpine with kubectl'
 inputs:
+  path:
+    description: 'ex. templates/nginx'
+    default: '.'
+    required: true
   context:
     description: 'ex. gke_asia-east1_edge-tw:ops:ops'
     required: true

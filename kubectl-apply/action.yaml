@@ -2,7 +2,7 @@ name: 'Kubectl Apply'
 description: 'Alpine with kubectl'
 inputs:
   kube_config:
-    description: 'kubernetes config file. ex. ${{ secrets.KUBE_CONFIG }}'
+    description: 'kubernetes config file.'
     required: true
   path:
     description: 'ex. templates/nginx'

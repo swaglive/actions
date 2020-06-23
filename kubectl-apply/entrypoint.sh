@@ -9,7 +9,7 @@ NAMESPACE=${INPUT_NAMESPACE:-default}
 WATCH_TIMEOUT=" --timeout ${INPUT_WATCH_TIMEOUT:-60s}"
 
 ## Configure
-echo "$KUBE_CONFIG" | base64 -d > /tmp/kube_config
+echo "$INPUT_KUBE_CONFIG" | base64 -d > /tmp/kube_config
 export KUBECONFIG=/tmp/kube_config
 
 ## Apply

@@ -14,9 +14,18 @@ jobs:
       - run: echo ${{ env.FLEX_GIT_SHA_SHORT }}
       - run: echo ${{ env.FLEX_GIT_REF_SHORT }}
       - run: echo ${{ env.FLEX_GIT_REF_FORMAT }}
-      
+
       - run: echo ${{ env.FLEX_GIT_TAG }}
         if: env.FLEX_GIT_TAG
+```
+
+## Value
+```bash
+FLEX_GIT_SHA: 6c1432f877ae26b4d044b6ed786f24f0427eb623
+FLEX_GIT_REF: feature/flex-env-1.1.1
+FLEX_GIT_SHA_SHORT: 6c1432f
+FLEX_GIT_REF_SHORT: feature/flex-env-1.1.1
+FLEX_GIT_REF_FORMAT: feature-flex-env-1-1-1
 ```
 
 ## Develop this action

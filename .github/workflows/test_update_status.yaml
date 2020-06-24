@@ -1,0 +1,12 @@
+name: Test update-status
+on:
+  push:
+    paths:
+      - "update-status/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: docker build update-status

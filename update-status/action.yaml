@@ -5,19 +5,19 @@ inputs:
     description: 'Option: success, failure'
     required: false
     default: 'success'
-  auth_token: 
+  auth_token:
     description: 'Auth token used to API'
     required: true
     default: "${{ github.token }}"
-  pull_sha: 
+  pull_sha:
     description: 'Commit SHA'
     default: "${{ github.event.pull_request.head.sha }}"
     required: false
-  deploy_to: 
+  deploy_to:
     description: 'Target cluster/environment'
     default: 'dev'
     required: true
-  sha_length: 
+  sha_length:
     description: 'SHA will short to N'
     default: '10'
     required: true

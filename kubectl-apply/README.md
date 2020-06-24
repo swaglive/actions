@@ -47,7 +47,7 @@ docker build -t kubectl .
 ```
 
 ```bash
-export KUBE_CONFIG=
+export INPUT_KUBE_CONFIG=
 export INPUT_CONTEXT=
 export INPUT_PATH=
 export INPUT_WATCH_NAMESPACE=

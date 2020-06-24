@@ -22,7 +22,7 @@ echo "::set-env name=FLEX_GIT_SHA::$FLEX_GIT_SHA"
 echo "::set-env name=FLEX_GIT_REF::$FLEX_GIT_REF"
 
 ## Shorten
-echo "::set-env name=FLEX_GIT_SHA_SHORT::${FLEX_GIT_SHA:0:7}"
+echo "::set-env name=FLEX_GIT_SHA_SHORT::${FLEX_GIT_SHA:0:${INPUT_GIT_SHORT_LENGTH:-7}}"
 FLEX_GIT_REF_SHORT="${FLEX_GIT_REF#refs/(heads|tags)/}"
 echo "::set-env name=FLEX_GIT_REF_SHORT::$FLEX_GIT_REF_SHORT"
 echo "::set-env name=FLEX_GIT_REF_FORMAT::${FLEX_GIT_REF_SHORT//[^a-z0-9A-Z]/-}"

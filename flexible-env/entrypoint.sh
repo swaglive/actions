@@ -2,7 +2,7 @@
 set -e
 
 if [[ "$GITHUB_EVENT_NAME" = "pull_request" ]]; then
-    FLEX_GIT_SHA="$(cat $GITHUB_EVENT_PATH | jq '.pull_request.head.sha')"
+    FLEX_GIT_SHA="$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.head.sha')"
 else
     FLEX_GIT_SHA="$GITHUB_SHA"
 fi

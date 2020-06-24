@@ -3,6 +3,7 @@
 `KUBE_CONFIG` must be base64 encoded.
 
 ```yaml
+jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
@@ -11,9 +12,9 @@
       uses: swaglive/actions/kubectl-apply@master
       with:
         kube_config: ${{ secrets.KUBE_CONFIG }}
-        path: templates/bot
         context: gke_asia-east1_edge-tw:ops:ops
-        kustomize: true
+        path: templates/bot       # default: .
+        kustomize: true           # default: false
         watch: deployment/bot     # optional
         namespace: ops            # default: default
         watch_timeout: 100s       # default: 60s
@@ -48,6 +49,7 @@ docker build -t kubectl .
 ```bash
 export KUBE_CONFIG=
 export INPUT_CONTEXT=
+export INPUT_PATH=
 export INPUT_NAMESPACE=
 export INPUT_WATCH=
 export INPUT_WATCH_TIMEOUT=

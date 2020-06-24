@@ -17,7 +17,7 @@ inputs:
   watch:
     description: 'ex. deployment/bot'
     required: false
-  namespace:
+  watch_namespace:
     description: 'ex. kube-system'
     default: 'default'
     required: false

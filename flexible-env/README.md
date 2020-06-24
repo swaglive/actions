@@ -4,6 +4,7 @@ name: Flexible env
 
 on:
   push:
+  pull_request:
 jobs:
   test:
     runs-on: ubuntu-latest

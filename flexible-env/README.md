@@ -19,28 +19,43 @@ jobs:
         if: env.FLEX_GIT_TAG
 ```
 
-## Value
+Change FLEX_GIT_SHA_SHORT length
+```yaml
+- use: swaglive/actions/flexible-env
+  with:
+    git_short_length: 10
+- run: echo ${{ env.FLEX_GIT_SHA }}
+  # 4fc2064c87d57440f9fd03ef8f68adcb4fd3cfdc
+- run: echo ${{ env.FLEX_GIT_SHA_SHORT }}
+  # 4fc2064c87
+```
+
+Get tag
+```yaml
+name: Flexible env - get tag
+
+on:
+  push:
+    tags:
+      - "**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - use: swaglive/actions/flexible-env
+      - run: echo $GITHUB_REF
+        # refs/tags/v1.1.1
+      - run: echo ${{ env.FLEX_GIT_TAG }}
+        if: env.FLEX_GIT_TAG
+        # v1.1.1
+```
+
+## Values
 ```bash
-FLEX_GIT_SHA: 6c1432f877ae26b4d044b6ed786f24f0427eb623
+FLEX_GIT_SHA: 4fc2064c87d57440f9fd03ef8f68adcb4fd3cfdc
 FLEX_GIT_REF: feature/flex-env-1.1.1
 FLEX_GIT_SHA_SHORT: 6c1432f
 FLEX_GIT_REF_SHORT: feature/flex-env-1.1.1
 FLEX_GIT_REF_FORMAT: feature-flex-env-1-1-1
-```
-
-## Develop this action
-Build
-```bash
-docker build -t flexible-env .
-```
-
-Run
-```bash
-export GITHUB_EVENT_NAME=
-export INPUT_PULL_SHA=
-export GITHUB_SHA=
-export GITHUB_HEAD_REF=
-export GITHUB_REF=
-
-docker run -it --rm  -e GITHUB_EVENT_NAME -e INPUT_PULL_SHA -e GITHUB_SHA -e GITHUB_HEAD_REF -e GITHUB_REF flexible-env
+FLEX_GIT_TAG: v1.1.1
 ```

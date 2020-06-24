@@ -1,0 +1,30 @@
+name: 'Kubectl Apply'
+description: 'Alpine with kubectl'
+inputs:
+  kube_config:
+    description: 'kubernetes config file.'
+    required: true
+  path:
+    description: 'ex. templates/nginx'
+    default: '.'
+    required: true
+  context:
+    description: 'ex. gke_asia-east1_edge-tw:ops:ops'
+    required: true
+  kustomize:
+    description: 'kubectl apply -k if true. Default to false.'
+    required: false
+  watch:
+    description: 'ex. deployment/bot'
+    required: false
+  watch_namespace:
+    description: 'ex. kube-system'
+    default: 'default'
+    required: false
+  watch_timeout:
+    description: '60s, 10m, 1h'
+    default: '60s'
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

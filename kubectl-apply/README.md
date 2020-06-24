@@ -16,7 +16,7 @@ jobs:
         path: templates/bot       # default: .
         kustomize: true           # default: false
         watch: deployment/bot     # optional
-        namespace: ops            # default: default
+        watch_namespace: ops      # default: default
         watch_timeout: 100s       # default: 60s
 ```
 
@@ -50,7 +50,7 @@ docker build -t kubectl .
 export KUBE_CONFIG=
 export INPUT_CONTEXT=
 export INPUT_PATH=
-export INPUT_NAMESPACE=
+export INPUT_WATCH_NAMESPACE=
 export INPUT_WATCH=
 export INPUT_WATCH_TIMEOUT=
 export INPUT_KUSTOMIZE=

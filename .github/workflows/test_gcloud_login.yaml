@@ -1,0 +1,12 @@
+name: Test gcloud-login
+on:
+  push:
+    paths:
+      - "gcloud/login/**"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run tests
+        run: docker build gcloud/login

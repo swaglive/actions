@@ -1,7 +1,7 @@
 
 FROM docker:stable
 
-RUN apk add curl python2 && \
+RUN apk add curl bash python2 && \
     curl https://sdk.cloud.google.com | bash -s -- --disable-prompts
 
 ENV PATH $PATH:/root/google-cloud-sdk/bin

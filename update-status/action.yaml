@@ -1,10 +1,7 @@
 name: 'Update Status'
 description: 'Update status'
 inputs:
-  state:
-    description: 'Option: success, failure'
-    required: false
-    default: 'success'
+  # Hacked way in this action.
   auth_token:
     description: 'Auth token used to API'
     required: true
@@ -13,14 +10,16 @@ inputs:
     description: 'Commit SHA'
     default: "${{ github.event.pull_request.head.sha }}"
     required: false
-  deploy_to:
-    description: 'Target cluster/environment'
-    default: 'dev'
-    required: true
-  sha_length:
-    description: 'SHA will short to N'
-    default: '10'
-    required: true
+
+  # You might want to use this.
+  state:
+    description: 'Option: success, failure'
+    required: false
+    default: 'success'
+  context:
+    description: 'Over 40 characters will be cut.'
+    required: false
+    default: 'swaglive/action@update-status'
 runs:
   using: 'docker'
   image: 'Dockerfile'

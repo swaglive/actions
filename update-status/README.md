@@ -16,5 +16,6 @@ jobs:
       - uses: ./update-status
       - uses: ./update-status
         with:
-          deploy_to: production
+          state: failure
+          context: Update by rammus
 ```

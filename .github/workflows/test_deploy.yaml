@@ -1,12 +1,12 @@
-name: Test deploy-action
+name: Test deploy
 on:
   push:
     paths:
-      - "deploy-action/**"
+      - "deploy/**"
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run: docker build deploy-action
+        run: docker build deploy

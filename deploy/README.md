@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./deploy-action
-      - uses: ./deploy-action
+      - uses: ./deploy
+      - uses: ./deploy
         with:
           deploy_to: production
           sha_length: 7

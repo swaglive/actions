@@ -1,7 +1,7 @@
 name: 'Deploy Action'
 description: >-
-  This is a example to update a git commit status.
-  You need run another probot to watch this status event.
+  This is a example to update a git commit status with deployment informantions.
+  You also need to run another probot to watch this status event.
 inputs:
   # Hacked way in this action.
   auth_token:

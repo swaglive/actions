@@ -1,12 +1,12 @@
-name: Test swag-deploy-action
+name: Test deploy-action
 on:
   push:
     paths:
-      - "swag-deploy-action/**"
+      - "deploy-action/**"
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run tests
-        run: docker build swag-deploy-action
+        run: docker build deploy-action

@@ -1,4 +1,4 @@
-name: 'Swag Deploy Action'
+name: 'Deploy Action'
 description: >-
   This is a example to update a git commit status.
   You need run another probot to watch this status event.

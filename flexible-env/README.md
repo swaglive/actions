@@ -9,7 +9,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - use: swaglive/actions/flexible-env
+      - uses: swaglive/actions/flexible-env
       - run: echo ${{ env.FLEX_GIT_SHA }}
       - run: echo ${{ env.FLEX_GIT_REF }}
       - run: echo ${{ env.FLEX_GIT_SHA_SHORT }}
@@ -22,7 +22,7 @@ jobs:
 
 Change FLEX_GIT_SHA_SHORT length
 ```yaml
-- use: swaglive/actions/flexible-env
+- uses: swaglive/actions/flexible-env
   with:
     git_short_length: 10
 - run: echo ${{ env.FLEX_GIT_SHA }}
@@ -43,7 +43,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - use: swaglive/actions/flexible-env
+      - uses: swaglive/actions/flexible-env
       - run: echo $GITHUB_REF
         # refs/tags/v1.1.1
       - run: echo ${{ env.FLEX_GIT_TAG }}

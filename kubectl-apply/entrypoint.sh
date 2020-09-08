@@ -14,6 +14,7 @@ export KUBECONFIG=/tmp/kube_config
 
 ## Apply
 kubectl apply $APPLY_METHOD $INPUT_PATH --context $INPUT_CONTEXT
+[[ "$INPUT_RESTART" ]] && kubectl rollout restart $INPUT_RESTART -n $INPUT_WATCH_NAMESPACE --context $INPUT_CONTEXT
 
 ## Watch
-[[ "$INPUT_WATCH" ]] && kubectl rollout status -n $INPUT_WATCH_NAMESPACE $INPUT_WATCH_TIMEOUT $INPUT_WATCH
+[[ "$INPUT_WATCH" ]] && kubectl rollout status $INPUT_WATCH_TIMEOUT $INPUT_WATCH -n $INPUT_WATCH_NAMESPACE --context $INPUT_CONTEXT

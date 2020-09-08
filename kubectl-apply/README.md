@@ -15,6 +15,7 @@ jobs:
         context: gke_asia-east1_edge-tw:ops:ops
         path: templates/bot       # default: .
         kustomize: true           # default: false
+        restart: deployment/bot   # optional
         watch: deployment/bot     # optional
         watch_namespace: ops      # default: default
         watch_timeout: 100s       # default: 60s
@@ -38,6 +39,7 @@ env:
   KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
 with:
   context: gke_asia-east1_edge-tw:ops:ops
+  restart: deployment/bot
   watch: deployment/bot     # optional
 ```
 

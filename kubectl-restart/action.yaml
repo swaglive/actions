@@ -21,5 +21,5 @@ runs:
     - run: |
         echo "${{ inputs.kube_config }}" | base64 -d > /tmp/kube_config
         export KUBECONFIG=/tmp/kube_config
-        kubectl rollout restart -n ${{ intputs.namespace }} --context ${{ inputs.context }} ${{ inputs.resource }}
+        kubectl rollout restart -n ${{ inputs.namespace }} --context ${{ inputs.context }} ${{ inputs.resource }}
       shell: bash

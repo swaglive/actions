@@ -1,0 +1,25 @@
+name: 'Kubectl Rollout Restart'
+description: 'Just rolling out the kubernetes resource'
+inputs:
+  kube_config:
+    description: 'kubernetes config file.'
+    required: true
+  context:
+    description: 'ex. gke_asia-east1_edge-tw:ops:ops'
+    required: true
+  namespace:
+    description: 'ex. kube-system'
+    default: 'default'
+    required: false
+  resource:
+    description: 'ex. deployment/api'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+        echo "${{ inputs.kube_config }}" | base64 -d > /tmp/kube_config
+        export KUBECONFIG=/tmp/kube_config
+        kubectl rollout restart -n ${{ intputs.namespace }} --context ${{ inputs.context }} ${{ inputs.resource }}
+      shell: bash

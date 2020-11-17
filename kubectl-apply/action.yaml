@@ -14,6 +14,9 @@ inputs:
   kustomize:
     description: 'kubectl apply -k if true. Default to false.'
     required: false
+  restart:
+    description: 'ex. deployment/bot'
+    required: false
   watch:
     description: 'ex. deployment/bot'
     required: false

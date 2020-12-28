@@ -5,7 +5,6 @@ on:
   pull_request:
 jobs:
   deploy:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

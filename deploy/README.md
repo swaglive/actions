@@ -13,5 +13,5 @@ jobs:
       - uses: swaglive/actions/deploy@v1.0
         with:
           deploy_to: production
-          sha_length: 
+          sha_length: 7
 ```

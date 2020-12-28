@@ -4,18 +4,14 @@ on:
   push:
   pull_request:
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - run: env
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./deploy
-      - uses: ./deploy
+      - uses: swaglive/actions/deploy@v1.0
+      - uses: swaglive/actions/deploy@v1.0
         with:
           deploy_to: production
-          sha_length: 7
+          sha_length: 
 ```

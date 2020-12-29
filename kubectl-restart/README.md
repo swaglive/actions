@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Kubectl Rollout Restart
-      uses: swaglive/actions/kubectl-restart@v1-branch
+      uses: swaglive/actions/kubectl-restart@v1.0
       with:
         kube_config: ${{ secrets.KUBE_CONFIG }}
         context: gke_asia-east1_edge-tw:ops:ops
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Kubectl Rollout Restart
-      uses: swaglive/actions/kubectl-restart@v1-branch
+      uses: swaglive/actions/kubectl-restart@v1.0
       with:
         kube_config: ${{ secrets.KUBE_CONFIG }}
         context: gke_asia-east1_edge-tw:ops:ops

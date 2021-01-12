@@ -10,7 +10,7 @@ INPUT_WATCH_TIMEOUT=" --timeout ${INPUT_WATCH_TIMEOUT:-60s}"
 
 ## Configure
 echo "$INPUT_KUBE_CONFIG" | base64 -d > /tmp/kube_config
-export KUBECONFIG=/tmp/kube_config
+export KUBECONFIG=$GITHUB_WORKSPACE/kube_config
 
 ## Apply
 kubectl apply $APPLY_METHOD $INPUT_PATH --context $INPUT_CONTEXT

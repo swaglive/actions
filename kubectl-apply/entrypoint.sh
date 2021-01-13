@@ -9,7 +9,7 @@ INPUT_WATCH_NAMESPACE=${INPUT_WATCH_NAMESPACE:-default}
 INPUT_WATCH_TIMEOUT=" --timeout ${INPUT_WATCH_TIMEOUT:-60s}"
 
 ## Configure
-echo "$INPUT_KUBE_CONFIG" | base64 -d > /tmp/kube_config
+echo "$INPUT_KUBE_CONFIG" | base64 -d > $GITHUB_WORKSPACE/kube_config
 export KUBECONFIG=$GITHUB_WORKSPACE/kube_config
 
 ## Apply

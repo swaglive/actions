@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 echo "$GCLOUD_AUTH" | base64 -d > gcloud.json

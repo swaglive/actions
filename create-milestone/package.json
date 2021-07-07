@@ -1,0 +1,21 @@
+{
+  "name": "create-milestone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test",
+    "build": "ncc build index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
+}

@@ -1,0 +1,19 @@
+name: 'Create Milestone Regularly'
+description: 'Manupate Github API'
+inputs:
+  start-date:
+    description: "Start date. Example: moment().startOf('w'), moment('2019-11-12')"
+    # default: "moment().startOf('w')"
+  duration:
+    description: 'How long is a milestone. Options: W, 2W, M, Q'
+    default: 'W'
+  title:
+    description: 'Milestone title. https://momentjs.com/docs/#/displaying/format/'
+    required: true
+    default: '[M]YYYY-[M]MM-[D]DD'
+  description:
+    description: 'Milestone description'
+    default: 'swaglive/action/create-milestone create'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
